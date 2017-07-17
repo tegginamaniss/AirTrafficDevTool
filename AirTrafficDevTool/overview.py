@@ -4,6 +4,7 @@ import numpy as np
 import shapely.geometry as sg
 from descartes import PolygonPatch
 from AirTrafficDevTool.file import File as FileReader
+import os
 
 KTS2MPS = 0.5144
 NMI2M = 1852
@@ -20,11 +21,12 @@ class Overview:
             self.ip_folder = input_folder
 
         if output_folder is None:
-            self.folder = "./Output/"
+            self.folder = os.path.abspath("./Output/")
         else:
-            self.folder = output_folder
+            self.folder = os.path.abspath(output_folder)
 
-        self.input_file = self.ip_folder + input_file
+        rel_path = self.ip_folder + input_file
+        self.input_file = os.path.abspath(rel_path)
         self.output_file = input_file[0:-5]
         self.show_plots = show_plots
         if save_plots is None:
@@ -60,17 +62,24 @@ class Overview:
         self.__begin()
 
     def __begin(self):
+        total_steps = 4
+
         # Read the input
         self.data = self.__read_input()
+        self.__status_bar(1, total_steps)
 
         # Process data
         self.__data_processing()
+        self.__status_bar(2, total_steps)
 
         # Plot settings
         self.__plot_config()
+        self.__status_bar(3, total_steps)
 
         # Plot data
         self.__plot_overview()
+        self.__status_bar(4, total_steps)
+        print("\nEnd of overview generation")
 
     def __read_input(self):
         return FileReader(self.input_file, 'yaml', False).load_data()['data']
@@ -175,8 +184,8 @@ class Overview:
             if not self.formats:
                 raise Exception("No formats specified. please specify to continue!")
             for idx, ext in enumerate(self.formats):
-                fname = "AirTraffic_Overview_" + self.output_file  + "." + ext
-                name = self.folder + fname
+                fname = "AirTraffic_Overview_" + self.output_file + "." + ext
+                name = self.folder + '\\' + fname
                 plt.savefig(name, format=ext, dpi=600)
                 self.saved_names.append([self.folder, fname])
 
@@ -291,6 +300,18 @@ class Overview:
 
     def output_names(self):
         return self.saved_names
+
+    @staticmethod
+    def __status_bar(i, steps):
+        import sys
+        perc = i / steps * 100
+        sys.stdout.write('\r')
+        # the exact output you're looking for:
+        length = 50
+        comman = "sys.stdout.write('Progress\t: [%-" + str(length) + "s] %d%%' % ('='*" + str(
+            int(perc * length / 100)) + ", " + str(perc) + "))"
+        exec(comman)
+        sys.stdout.flush()
 
 if __name__ == "__main__":
     view = Overview(input_file='test2.yaml', formats=['svg', 'png'])

@@ -12,8 +12,6 @@ D2R = np.deg2rad(1)
 
 
 class SSDi:
-    # def __init__(self, input_file, input_folder=None, output_folder=None, show_plots=False, save_plots=None,
-    # formats=None):
     def __init__(self, stand_alone=False, acid=None, data=None, input_file=None, input_folder=None, output_folder=None, show_plots=False, save_plots=None, formats=None):
         if not stand_alone:
             self.o_acid = acid
