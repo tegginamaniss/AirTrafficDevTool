@@ -8,11 +8,13 @@ The package initially started just as a script to generate high resolution image
 ## Examples
 * Overall perspective of the scenario or as seen from an ATCO's perspective
 
-    ![Overall](./AirTrafficDevTool/Docs/Images/Overview.png)
+    <!-- ![Overall](./AirTrafficDevTool/Docs/Images/Overview.png) -->
+    <img src="./AirTrafficDevTool/Docs/Images/Overview.png" width="400" height="400" />
 * SSD visualization
     1. A circular SSD for full situational awareness
 
-        ![SSD_Full](./AirTrafficDevTool/Docs/Images/SSD_Full.png)
+        <img src="./AirTrafficDevTool/Docs/Images/SSD_Full.png" width="400" height="400" />
+        <!-- ![SSD_Full](./AirTrafficDevTool/Docs/Images/SSD_Full.png) -->
 
     2. A semi-circular SSD for Navigation Display perspective
     3. Same color SSD or multi-colored SSD, based on Time to Loss of Separation (*T<sub>LOS</sub>*)

@@ -186,7 +186,7 @@ class Overview:
             for idx, ext in enumerate(self.formats):
                 fname = "AirTraffic_Overview_" + self.output_file + "." + ext
                 name = self.folder + '\\' + fname
-                plt.savefig(name, format=ext, dpi=600)
+                plt.savefig(name, format=ext, dpi=600, bbox_inches='tight')
                 self.saved_names.append([self.folder, fname])
 
         # Show the plots
@@ -314,4 +314,4 @@ class Overview:
         sys.stdout.flush()
 
 if __name__ == "__main__":
-    view = Overview(input_file='test2.yaml', formats=['svg', 'png'])
+    view = Overview(input_file='sample.yaml', formats=['svg', 'png'])
