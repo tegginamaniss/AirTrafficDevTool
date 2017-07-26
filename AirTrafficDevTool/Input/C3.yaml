@@ -1,0 +1,11 @@
+description: Follow the syntax to describe the air traffic pattern. Position is in 'NMI'. Speed is in 'KNOTS'. Heading angle is in 'degree'.
+syntax:
+  - ['ACID', [<POSX>, <POSY>], <SPD>, <HDG>]
+units:
+  - ['N/A', ['NMI', 'NMI'], 'KNOTS', 'DEGREE']
+data_type:
+  - ['string', ['float', 'float'], 'float', 'float']
+data:
+  - ['MS841', [0, -60], 300, 0]
+  - ['MS842', [57.144, 36.354], 340, 250]
+  - ['MS843', [-72.132, 78.45], 350, 120]

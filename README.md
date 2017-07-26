@@ -6,9 +6,9 @@ AirTrafficDevTool
 The package initially started just as a script to generate high resolution images in vector graphics format. This script later evolved to a package, what is now named as **AirTrafficDevTool**. At this point, you can not only use it for creating high quality image files, but also for designing air traffic scenarios, and exporting it in a customized text formats.
 
 ## Examples
-* Overall perspective of the scenario or as seen from an ATCO's perspective
+* Overall perspective of the scenario (Overview)
 
-     ![Overall](./AirTrafficDevTool/Docs/Images/Overview.svg)
+     ![Overall](./AirTrafficDevTool/Docs/Images/Overview.png)
 * SSD visualization
     1. A circular SSD for full situational awareness
 

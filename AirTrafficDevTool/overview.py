@@ -314,4 +314,4 @@ class Overview:
         sys.stdout.flush()
 
 if __name__ == "__main__":
-    view = Overview(input_file='sample.yaml', formats=['svg', 'png'])
+    view = Overview(input_file='C3.yaml', formats=['svg', 'png'])
