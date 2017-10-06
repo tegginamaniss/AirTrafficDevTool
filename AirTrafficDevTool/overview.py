@@ -66,20 +66,16 @@ class Overview:
 
         # Read the input
         self.data = self.__read_input()
-        self.__status_bar(1, total_steps)
 
         # Process data
         self.__data_processing()
-        self.__status_bar(2, total_steps)
 
-        # Plot settings
-        self.__plot_config()
-        self.__status_bar(3, total_steps)
-
-        # Plot data
-        self.__plot_overview()
-        self.__status_bar(4, total_steps)
-        print("\nEnd of overview generation")
+        # # Plot settings
+        # self.__plot_config()
+        #
+        # # Plot data
+        # self.__plot_overview()
+        # print("\nEnd of overview generation")
 
     def __read_input(self):
         return FileReader(self.input_file, 'yaml', False).load_data()['data']
@@ -87,6 +83,7 @@ class Overview:
     def __data_processing(self):
         # Get the x and y limits of the plot
         lx, rx, by, ty = self.__find_plot_limits()
+
 
         # Create the North symbol patch
         north_patch, north_bx, north_by = self.__create_north_patch(lx, rx, ty)
@@ -268,6 +265,7 @@ class Overview:
         y = []
 
         for items in self.data:
+            print(items)
             x.append(items[1][0] * NMI2M)
             y.append(items[1][1] * NMI2M)
 
@@ -301,17 +299,6 @@ class Overview:
     def output_names(self):
         return self.saved_names
 
-    @staticmethod
-    def __status_bar(i, steps):
-        import sys
-        perc = i / steps * 100
-        sys.stdout.write('\r')
-        # the exact output you're looking for:
-        length = 50
-        comman = "sys.stdout.write('Progress\t: [%-" + str(length) + "s] %d%%' % ('='*" + str(
-            int(perc * length / 100)) + ", " + str(perc) + "))"
-        exec(comman)
-        sys.stdout.flush()
 
 if __name__ == "__main__":
-    view = Overview(input_file='C3.yaml', formats=['svg', 'png'])
+    view = Overview(input_file='C5I3.yaml', formats=['svg', 'png'])
